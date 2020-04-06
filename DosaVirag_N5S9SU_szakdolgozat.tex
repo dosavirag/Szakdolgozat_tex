@@ -1,0 +1,159 @@
+\documentclass[a4paper,12pt,oneside]{report} %12pt-s referencia-bet?méter
+
+
+% % % % MÓDOSÍTÁSOK KÉTOLDALAS NYOMTATÁSHOZ % % % %
+%\documentclass[twoside]{report}
+%\usepackage[inner=4cm,outer=2cm]{geometry} %left=4cm,right=2cm would be equivalent
+% % % % MÓDOSÍTÁSOK KÉTOLDALAS NYOMTATÁSHOZ % % % %
+
+% egyenletek listázása
+%\usepackage{tocloft}
+
+%\usepackage{todonotes} %\todo{Replace dummy text} megjegyzések
+%\usepackage{ucs}
+%\usepackage{pdfpages}
+
+%\usepackage{tikz}   %pdf-s képek beillesztése
+%\usetikzlibrary{decorations.pathreplacing,	decorations.pathmorphing}
+%\usepackage[europeanresistors,americaninductors]{circuitikz}
+%\usetikzlibrary{decorations.pathreplacing}
+%\usepackage{amssymb}
+%\usepackage{amsmath, amssymb, graphics, setspace}
+
+%\newcommand{\mathsym}[1]{{}}
+%\newcommand{\unicode}[1]{{}}
+
+%\newcounter{mathematicapage}
+
+\usepackage{multirow}
+\usepackage{rotating}
+\usepackage{float}
+%\usepackage{hhline}
+
+%\usepackage{epsfig} %*.png-t is lehet vele include-olni, de akkor orbitális lesz a mérete
+
+%\usepackage{titlesec}
+%\setkomafont{chapter}{\normalfont\huge\sffamily\bfseries\color{blue}}
+
+%\usepackage{framed}
+
+%\usepackage{color}
+
+%\usepackage{etex}
+% % % % OLDALBEÁLLÍTÁSOK % % % %
+\usepackage[top=3cm, bottom=3cm, left=4cm, right=3cm]{geometry} %margók
+\usepackage{fancyhdr} % él?fej-él?láb
+
+
+
+% % % % EGYÉB BEÁLLÍTÁSOK % % % %	
+\usepackage[magyar]{babel} % magyar helyesírás, elválasztás, idéz?jelek stb.
+\usepackage{t1enc} % = \usepackage[T1]{fontenc} % valami bug korrigálása
+\usepackage[utf8x]{inputenc} % magyar ékezetes bet?készlet
+\usepackage{graphicx}
+
+\usepackage{pgfplots}
+\pgfplotsset{compat=1.5}
+\usepackage{amsmath}
+
+\usepackage{setspace}
+\pgfplotsset{width=7cm,compat=1.9}
+% % % % EGYÉB BEÁLLÍTÁSOK % % % %
+
+% % % % BET?TÍPUSOK % % % %
+\usepackage{sectsty}
+\allsectionsfont{\normalfont\sffamily\normalsize\bfseries} %section-ok számozásának bet?típusa
+%	\subsectionfont{\normalfont\\sffamily\normalsize\bfseries} %subsuction-ok számozásának bet?típusa
+\renewcommand{\sfdefault}{phv} % section-ok bet?típusa Arial
+%\renewcommand{\rmdefault}{phv} %Arial %nemtudommi, látható változást nem okozott
+\usepackage{mathptmx} % Times Roman!
+% % % % BET?TÍPUSOK % % % %
+
+
+% % % % "Tartalomjegyzék" STÍLUSA % % % %
+\usepackage{titlesec}
+\titleformat{\chapter}{\normalfont\large\bfseries}{\thechapter.}{}{}	
+\setcounter{secnumdepth}{4} %mélység paragraph-ig, 5 ha a subparagraph-ig
+% % % % "Tartalomjegyzék" STÍLUSA % % % %
+
+% % % % SORTÁVOLSÁG % % % %
+\frenchspacing
+\onehalfspace %sortávolság
+% % % % SORTÁVOLSÁG % % % %
+
+\usepackage[hidelinks]{hyperref}
+
+%%kód stílus
+\usepackage{listings}
+
+\definecolor{dkgreen}{rgb}{0,0.6,0}
+\definecolor{gray}{rgb}{0.5,0.5,0.5}
+\definecolor{mauve}{rgb}{0.58,0,0.82}
+
+\lstset{frame=tb,
+	language=Java,
+	aboveskip=3mm,
+	belowskip=3mm,
+	showstringspaces=false,
+	columns=flexible,
+	basicstyle={\small\ttfamily},
+	numbers=left,
+	numberstyle=\tiny\color{gray},
+	commentstyle=\color{dkgreen},
+	stringstyle=\color{mauve},
+	breaklines=true,
+	breakatwhitespace=true,
+	tabsize=3,
+	keywordstyle=\color{blue},
+}
+
+\graphicspath{ {images/}}
+
+%\usepackage{tabu}
+
+\usepackage[labelfont=bf,list=true]{subcaption}
+\usepackage[labelsep=quad,indention=10pt]{caption}
+
+	\fancyhf{} %minden fej- es lablec ures
+	\renewcommand{\headrulewidth}{1pt} %fejlec vonal vastagsága
+	\pagestyle{fancy}
+	
+	\chead{\thechapter. \chaptername} %fejlecbe fejezetcim
+	\cfoot[\thepage]{\thepage} %oldalszam a jobb also sarokba a páros és páratlan oldalon is
+	% % % % OLDALBEÁLLÍTÁSOK % % % %
+
+\usepackage{dcolumn} %fuggelleg táblázat szélesség
+
+\usepackage{dirtree}
+
+% xy szót ne válassza el soha.
+\hyphenation{xy}
+
+\begin{document}
+
+	\input{Formaiak}
+
+	\newpage
+	\input{Tartalmi_Osszefoglalo}
+	
+	\pagestyle{empty}
+	\tableofcontents
+	
+	\pagestyle{empty}
+	\listoffigures
+	
+	\pagestyle{fancy}
+	\input{Bevezetes}
+	\input{Alkalmazott_eszkozok}
+	\input{Rendszerterv}
+	\input{Implementacio}
+	\input{Tesztek}
+	\input{Osszegzes}
+	
+	\newpage
+	\pagestyle{plain}
+	\input{Irodalomjegyzek}
+	
+	\input{Fuggelek}
+	
+\end{document}
